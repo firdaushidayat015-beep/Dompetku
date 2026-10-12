@@ -5,7 +5,7 @@ Dibuat oleh **Kelompok 5 2025D **.
 Anggota **Firdaus Hidayat (25091397149) Fakhrizatus Juva Leizikha (25091397142) Andy Yusuf Maulana (25091397150)**.
 Dibuat dengan **HTML, CSS, dan JavaScript murni** (tanpa framework).
 
-- **Alamat web:** `[https://firdaushidayat015-beep.github.io/Dompetku/](https://firdaushidayat015-beep.github.io/Dompetku/dompetku/dompetku/)`
+- **Alamat web:** `[[https://firdaushidayat015-beep.github.io/Dompetku/]'
 - **Dokumen SRS:** `docs/Dokumentasi_Perancangan_Sistem_DompetKu.pdf` dan `docs/SRS.md`
 
 ## Cara melihat halaman
