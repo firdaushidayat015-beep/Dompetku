@@ -11,7 +11,7 @@
 | **Penyusun** | Firdaus Hidayat (25091397149), Fakhrizatus Juva Leizikha (25091397142), Andy Yusuf Maulana (25091397150) |
 | **Jenis tugas** | UTS: membuat halaman website interaktif dengan HTML, CSS, dan JavaScript, lalu di-hosting di GitHub |
 | **Versi dokumen** | 1.0 |
-| **Alamat web** | https://firdaushidayat015-beep.github.io/Dompetku/dompetku/dompetku/ |
+| **Alamat web** | https://firdaushidayat015-beep.github.io/Dompetku/dompetku/ |
 
 ---
 
