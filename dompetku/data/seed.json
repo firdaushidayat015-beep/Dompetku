@@ -1,0 +1,47 @@
+{
+  "profile": {
+    "name": "Firdaus Hidayat S.,Tr.,Kom.",
+    "email": "firdaus.hidayat@email.com",
+    "id": "FH-2026-KOM"
+  },
+  "settings": {
+    "currency": "IDR",
+    "budget": 10000000,
+    "hideBalance": false,
+    "notif": { "harian": true, "batas": true, "mingguan": true }
+  },
+  "categories": [
+    "Makanan & Minuman", "Tempat Tinggal & Utilitas", "Belanja & Kebutuhan", 
+    "Transportasi", "Hiburan", "Gaji & Karier", "Bonus / Hadiah", 
+    "Kendaraan Impian", "Ibadah"
+  ],
+  "accounts": [
+    { "name": "Tahapan BCA", "short": "BCA", "mask": "•••• 4892", "badge": "Utama" },
+    { "name": "Mandiri Tabungan", "short": "MDR", "mask": "•••• 9104", "badge": "" },
+    { "name": "GoPay & OVO", "short": "E-W", "mask": "+2 E-Wallet Lainnya", "badge": "Aktif" }
+  ],
+  "transactions": [
+    { "id": 1, "date": "2026-10-25T10:15", "title": "Gaji Pokok - PT Teknologi Nusantara", "note": "Payroll Oktober 2026", "category": "Gaji & Karier", "method": "BCA Prioritas", "type": "in", "amount": 14000000 },
+    { "id": 2, "date": "2026-10-25T08:00", "title": "Langganan Spotify Premium", "note": "Tagihan Bulanan Otomatis", "category": "Hiburan", "method": "Mandiri Debit", "type": "out", "amount": 54500 },
+    { "id": 3, "date": "2026-10-24T19:42", "title": "Belanja Bulanan Grand Lucky", "note": "Bahan Pangan SCBD", "category": "Belanja & Kebutuhan", "method": "GoPay", "type": "out", "amount": 425000 },
+    { "id": 4, "date": "2026-10-24T12:30", "title": "Makan Siang Padang Sederhana", "note": "Ayam Pop & Es Teh", "category": "Makanan & Minuman", "method": "QRIS BCA", "type": "out", "amount": 35000 },
+    { "id": 5, "date": "2026-10-24T12:35", "title": "Cashback Promo Tokopedia", "note": "Rewards Transaksi Elektronik", "category": "Bonus / Hadiah", "method": "OVO Cash", "type": "in", "amount": 200000 },
+    { "id": 6, "date": "2026-10-22T09:10", "title": "Tagihan Listrik PLN Pascabayar", "note": "ID Pel: 53210984920", "category": "Tempat Tinggal & Utilitas", "method": "BCA Virtual Account", "type": "out", "amount": 212500 },
+    { "id": 7, "date": "2026-10-22T07:45", "title": "Bensin Shell V-Power", "note": "SPBU Gatot Subroto", "category": "Transportasi", "method": "Kartu Kredit Visa", "type": "out", "amount": 250000 },
+    { "id": 8, "date": "2026-10-19T19:00", "title": "Tiket Bioskop", "note": "Nonton bareng teman", "category": "Hiburan", "method": "QRIS BCA", "type": "out", "amount": 128000 },
+    { "id": 9, "date": "2026-10-17T15:30", "title": "Kopi Kenangan Senopati", "note": "Es kopi susu", "category": "Makanan & Minuman", "method": "GoPay", "type": "out", "amount": 65000 },
+    { "id": 10, "date": "2026-10-14T10:00", "title": "Tol & Parkir", "note": "Perjalanan akhir pekan", "category": "Transportasi", "method": "QRIS BCA", "type": "out", "amount": 250000 },
+    { "id": 11, "date": "2026-10-12T20:15", "title": "Pesan Antar Sushi", "note": "Makan malam keluarga", "category": "Makanan & Minuman", "method": "GoPay", "type": "out", "amount": 500000 },
+    { "id": 12, "date": "2026-10-10T16:00", "title": "Belanja Hypermart", "note": "Kebutuhan rumah tangga", "category": "Belanja & Kebutuhan", "method": "Mandiri Debit", "type": "out", "amount": 808000 },
+    { "id": 13, "date": "2026-10-08T18:00", "title": "Gojek Bulanan", "note": "Paket langganan ojek", "category": "Transportasi", "method": "GoPay", "type": "out", "amount": 322000 },
+    { "id": 14, "date": "2026-10-06T21:00", "title": "Game Steam", "note": "Pembelian game", "category": "Hiburan", "method": "Kartu Kredit Visa", "type": "out", "amount": 500000 },
+    { "id": 15, "date": "2026-10-03T08:00", "title": "Langganan Katering Harian", "note": "Katering sebulan", "category": "Makanan & Minuman", "method": "Mandiri Debit", "type": "out", "amount": 1800000 },
+    { "id": 16, "date": "2026-10-01T09:00", "title": "Sewa Kos Bulanan", "note": "Pembayaran kos Oktober", "category": "Tempat Tinggal & Utilitas", "method": "BCA Prioritas", "type": "out", "amount": 1500000 }
+  ],
+  "goals": [
+    { "id": 1, "name": "Maclaren", "category": "Kendaraan Impian", "desc": "Supercar idaman masa depan.", "target": 8000000000, "saved": 1500000000, "deadline": "2028-12-31", "status": "active", "main": true },
+    { "id": 2, "name": "HJ 2027", "category": "Ibadah", "desc": "Persiapan dana ONH Plus Haji 2027.", "target": 350000000, "saved": 200000000, "deadline": "2027-05-15", "status": "active" },
+    { "id": 3, "name": "Harley Davidson", "category": "Kendaraan Impian", "desc": "Moge impian untuk touring.", "target": 600000000, "saved": 50000000, "deadline": "2028-06-30", "status": "active" }
+  ],
+  "growthThisMonth": 155000000
+}

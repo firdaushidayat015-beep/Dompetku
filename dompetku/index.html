@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DompetKu - aplikasi manajemen keuangan personal berbasis web">
+  <title>DompetKu - Keuangan Personal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..500,0..1,0" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+
+    <!-- ===== SIDEBAR NAVIGASI ===== -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon"><span class="icon">account_balance_wallet</span></div>
+        <div><strong>DompetKu</strong><small>KEUANGAN PERSONAL</small></div>
+      </div>
+      <nav class="menu" aria-label="Menu utama">
+        <a href="#beranda" data-page="beranda"><span class="icon">dashboard</span>Beranda</a>
+        <a href="#transaksi" data-page="transaksi"><span class="icon">receipt_long</span>Transaksi</a>
+        <a href="#tabungan" data-page="tabungan"><span class="icon">savings</span>Target Tabungan</a>
+        <a href="#laporan" data-page="laporan"><span class="icon">monitoring</span>Laporan Keuangan</a>
+        <a href="#pengaturan" data-page="pengaturan"><span class="icon">settings</span>Pengaturan</a>
+      </nav>
+    </aside>
+
+    <div class="main">
+      <!-- ===== TOPBAR ===== -->
+      <header class="topbar">
+        <label class="search">
+          <span class="icon">search</span>
+          <input id="globalSearch" type="search" placeholder="Cari mutasi, tagihan, atau kategori...">
+        </label>
+        
+        <div class="period-pill"><span class="icon">calendar_month</span>Oktober 2026<span class="icon">expand_more</span></div>
+        
+        <!-- TOMBOL DARK MODE -->
+        <button id="btnTheme" class="icon-btn" style="margin-left:auto; background:var(--gray);" aria-label="Ganti Tema"><span class="icon" id="themeIcon">dark_mode</span></button>
+        
+        <div class="user" style="margin-left:0;"><span id="topName">Firdaus Hidayat S.,Tr.,Kom.</span><div class="avatar"><span class="icon">person</span></div></div>
+      </header>
+
+      <main class="content">
+
+        <!-- ================= BERANDA ================= -->
+        <section id="page-beranda" class="page">
+          <div class="hero">
+            <span class="chip-glass"><i class="dot"></i>PERIODE: OKTOBER 2026</span>
+            <h1>Halo, <span id="heroName">Firdaus</span>!</h1>
+          </div>
+
+          <div class="grid-4">
+            <article class="card stat">
+              <div class="stat-head"><span class="mini-icon gray"><span class="icon">account_balance</span></span><span>Total Saldo Aktif</span><span class="badge mint" id="balBadge"><i class="dot"></i>Aman</span></div>
+              <div class="big" id="dashBalance">-</div>
+              <p class="muted">Konsolidasi 3 Rekening &amp; 2 Dompet</p>
+            </article>
+            <article class="card stat">
+              <div class="stat-head"><span class="mini-icon mint"><span class="icon">trending_up</span></span><span>Pemasukan Bulan Ini</span><span class="badge green">↗ +12%</span></div>
+              <div class="big" id="dashIncome">-</div>
+              <p class="muted"><b class="green-text">Gaji &amp; Dividen</b> telah masuk</p>
+              <div class="mini-box"><div class="row"><span>Target Pemasukan: <b id="incTargetLabel"></b></span><b id="incPct"></b></div><div class="bar"><i id="incBar"></i></div></div>
+            </article>
+            <article class="card stat">
+              <div class="stat-head"><span class="mini-icon red"><span class="icon">trending_down</span></span><span>Pengeluaran Bulan Ini</span><span class="badge gray" id="expBadge"></span></div>
+              <div class="big" id="dashExpense">-</div>
+              <p class="muted" id="dashLimit"></p>
+              <div class="mini-box"><div class="row"><span>Pagu Pemakaian</span><b class="red-text" id="expPct"></b></div><div class="bar red"><i id="expBar"></i></div></div>
+            </article>
+            <article class="card stat">
+              <div class="stat-head"><span class="mini-icon blue"><span class="icon">verified_user</span></span><span>Sisa Anggaran Aman</span><span class="badge blue" id="leftBadge"></span></div>
+              <div class="big green-text" id="dashLeft">-</div>
+              <p class="muted" id="dashDaily"></p>
+              <div class="mini-box"><div class="row"><span>Sisa Waktu Siklus:</span><b>11 Hari Lagi</b></div></div>
+            </article>
+          </div>
+
+          <div class="grid-2">
+            <div class="stack">
+              <article class="card">
+                <div class="card-head"><div><h2>Alokasi Pengeluaran Bulanan</h2><p class="muted" id="allocSub"></p></div><button class="pill-btn" data-go="laporan">Rincian <span class="icon">chevron_right</span></button></div>
+                <div class="alloc"><div class="donut" id="dashDonut"></div><ul class="legend-bars" id="dashLegend"></ul></div>
+              </article>
+              <article class="card" id="mainGoal"></article>
+            </div>
+            <article class="card">
+              <h2>Transaksi Terbaru</h2><p class="muted">Mutasi mutakhir bulan ini</p>
+              <ul class="recent" id="recentList"></ul>
+              <button class="btn-gray wide" data-go="transaksi">Lihat Semua Transaksi <span class="icon">arrow_forward</span></button>
+            </article>
+          </div>
+        </section>
+
+        <!-- ================= TRANSAKSI ================= -->
+        <section id="page-transaksi" class="page">
+          <div class="page-head">
+            <h1>Daftar Transaksi</h1>
+            <div class="head-actions">
+              <span class="period-pill white"><span class="icon">calendar_month</span>Oktober 2026<span class="icon">arrow_drop_down</span></span>
+              <button class="btn-primary" id="btnAddTx"><span class="icon">add_circle</span>Catat Transaksi</button>
+            </div>
+          </div>
+          <div class="grid-3">
+            <article class="card sum"><span class="eyebrow">TOTAL PEMASUKAN</span><span class="mini-icon mint corner"><span class="icon">arrow_downward</span></span><div class="big green-text" id="txIncome"></div><p><span class="badge mint" id="txIncCount"></span></p></article>
+            <article class="card sum"><span class="eyebrow">TOTAL PENGELUARAN</span><span class="mini-icon red corner"><span class="icon">arrow_upward</span></span><div class="big" id="txExpense"></div><p class="muted" id="txExpCount"></p></article>
+            <article class="card sum dark"><span class="eyebrow">SURPLUS ARUS KAS <i class="dot"></i></span><span class="mini-icon dk corner"><span class="icon">trending_up</span></span><div class="big" id="txSurplus"></div><p><span class="badge dk" id="txHealth">Keuangan Sehat</span></p></article>
+          </div>
+
+          <article class="card filters">
+            <div class="filter-top">
+              <div class="tabs" id="typeTabs">
+                <button class="active" data-type="all">Semua (<span id="cntAll">0</span>)</button>
+                <button data-type="out">Pengeluaran (<span id="cntOut">0</span>)</button>
+                <button data-type="in">Pemasukan (<span id="cntIn">0</span>)</button>
+              </div>
+              <div class="method-chips"><b>Metode:</b><div id="methodChips"></div></div>
+            </div>
+            <div class="filter-bottom">
+              <label class="search light"><span class="icon">search</span><input id="txSearch" type="search" placeholder="Cari transaksi, merchant, catatan..."></label>
+              <select id="catFilter" aria-label="Filter kategori"></select>
+            </div>
+          </article>
+
+          <article class="card table-card">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>TANGGAL &amp; WAKTU</th><th>DESKRIPSI</th><th>KATEGORI</th><th>REKENING / DOMPET</th><th>JENIS</th><th class="right">NOMINAL</th><th></th></tr></thead>
+                <tbody id="txBody"></tbody>
+              </table>
+            </div>
+            <div class="table-foot"><span id="pageInfo"></span><div class="pager" id="pager"></div></div>
+          </article>
+        </section>
+
+        <!-- ================= TABUNGAN ================= -->
+        <section id="page-tabungan" class="page">
+          <div class="page-head">
+            <div><h1>Target &amp; Pos Tabungan</h1><p class="muted">Kelola rencana finansial dan tabungan impian Anda secara terukur</p></div>
+            <button class="btn-primary" id="btnAddGoal"><span class="icon">add_circle</span>Buat Target Baru</button>
+          </div>
+          <article class="card savings-hero">
+            <div class="row"><span>Total Tabungan Terkumpul</span><span id="shPct"></span></div>
+            <div class="sh-amount"><strong id="shSaved"></strong><span id="shTarget"></span></div>
+            <div class="bar light"><i id="shBar"></i></div>
+            <div class="sh-boxes">
+              <div><small>Kekurangan Target</small><b id="shLack"></b></div>
+              <div><small>Pertumbuhan Bulan Ini</small><b class="mint-text" id="shGrowth"></b></div>
+              <div><small>Target Tuntas Terdekat</small><b id="shNearest"></b></div>
+            </div>
+          </article>
+          <div class="tabs soft" id="goalTabs">
+            <button class="active" data-status="active">Sedang Berjalan <em id="gcActive">0</em></button>
+            <button data-status="done">Selesai <em id="gcDone">0</em></button>
+            <button data-status="archived">Arsip <em id="gcArch">0</em></button>
+          </div>
+          <div class="grid-3 goals" id="goalList"></div>
+        </section>
+
+        <!-- ================= LAPORAN ================= -->
+        <section id="page-laporan" class="page">
+          <div class="page-head">
+            <div><h1>Laporan &amp; Analisis Keuangan</h1><p class="muted">Pemantauan arus kas, alokasi pengeluaran, dan stabilitas anggaran personal Anda.</p></div>
+            <div class="tabs soft" id="rangeTabs"><button class="active" data-range="month">Bulan Ini</button><button data-range="year">Tahun 2026</button></div>
+          </div>
+          <div class="grid-3">
+            <article class="card sum"><span class="eyebrow">TOTAL PEMASUKAN</span><span class="mini-icon mint corner"><span class="icon">arrow_downward</span></span><div class="big" id="rpIncome"></div><p><span class="badge mint" id="rpIncBadge"></span></p></article>
+            <article class="card sum"><span class="eyebrow">TOTAL PENGELUARAN</span><span class="mini-icon red corner"><span class="icon">arrow_upward</span></span><div class="big" id="rpExpense"></div></article>
+            <article class="card sum"><span class="eyebrow">EFISIENSI ANGGARAN</span><span class="mini-icon blue corner"><span class="icon">savings</span></span><div class="big green-text" id="rpSave"></div></article>
+          </div>
+          <div class="grid-2 report">
+            <div class="stack">
+              <article class="card">
+                <div class="card-head"><div><h2>Analisis Pengeluaran per Kategori</h2><p class="muted" id="rpPeriod"></p></div><span class="badge gray" id="rpSectors"></span></div>
+                <div class="alloc report-alloc"><div class="donut" id="rpDonut"></div><ul class="legend-list" id="rpLegend"></ul></div>
+                <div class="row quota"><b>Distribusi Beban Anggaran</b><b id="rpQuota"></b></div>
+                <div class="stackbar" id="rpStack"></div>
+              </article>
+              <article class="card">
+                <div class="card-head"><div><h2>Tren Komparasi Bulan ke Bulan</h2><p class="muted">Analisis pergeseran beban pengeluaran riil</p></div><span class="badge mint" id="trendBadge"></span></div>
+                <div class="compare" id="trendBox"></div>
+              </article>
+            </div>
+            <article class="card side-card">
+              <div class="card-head"><div><h2>Metode Pembayaran</h2><p class="muted">Frekuensi &amp; kanal transaksi harian</p></div><span class="icon">credit_card</span></div>
+              <ul class="methods" id="methodList"></ul>
+            </article>
+          </div>
+        </section>
+
+        <!-- ================= PENGATURAN ================= -->
+        <section id="page-pengaturan" class="page">
+          <div class="settings">
+            <div class="stack">
+              <article class="card profile">
+                <div class="profile-bar"></div>
+                <div class="big-avatar"><span id="avatarInitial">F</span><i class="shield"><span class="icon">shield</span></i></div>
+                <h2 id="pfName"></h2>
+                <p class="muted"><span class="icon sm">mail</span> <span id="pfEmail"></span></p>
+                <button class="id-chip" id="btnCopyId" title="Salin ID"><span id="pfId"></span> <span class="icon sm">content_copy</span></button>
+                <button class="btn-gray wide" id="btnEditProfile"><span class="icon">badge</span>Edit Profil Lengkap</button>
+              </article>
+              <article class="card">
+                <div class="card-head"><h2><span class="mini-icon gray inline"><span class="icon">account_balance</span></span> Rekening Terkait</h2><button class="link-btn" id="btnAddAccount">+ Tambah</button></div>
+                <ul class="accounts" id="accountList"></ul>
+                <button class="link-btn center" id="btnAutoDebit">Kelola izin &amp; batas auto-debit ›</button>
+              </article>
+            </div>
+
+            <div class="stack">
+              <article class="card">
+                <div class="set-title"><span class="mini-icon mint lg"><span class="icon">payments</span></span><div><h2>Finansial &amp; Anggaran</h2><p class="muted">Preferensi perhitungan, mata uang, dan batasan pos belanja bulanan</p></div></div>
+                <div class="grid-2e">
+                  <div class="soft-box"><div class="row"><b>Mata Uang &amp; Format Angka</b><span class="icon">euro</span></div><p class="muted">Standar akuntansi Indonesia (Pemisah ribuan titik, desimal koma).</p><div class="row end"><strong id="curLabel"></strong><button class="link-btn" id="btnCurrency">Ubah ›</button></div></div>
+                  <div class="soft-box"><div class="row"><b>Batas Anggaran Bulanan</b><span class="icon">tune</span></div><p class="muted">Alokasi maksimal pengeluaran gabungan seluruh rekening.</p><div class="row end"><strong id="budgetLabel"></strong><button class="link-btn" id="btnBudget">Sesuaikan ›</button></div></div>
+                </div>
+                <div class="soft-box cat-box"><div><b>Kelola Kategori Transaksi <span class="badge blue" id="catCount"></span></b><p class="muted" id="catSummary"></p></div><button class="btn-white" id="btnCategories">Atur Kategori <span class="icon">category</span></button></div>
+              </article>
+              <article class="card">
+                <div class="set-title"><span class="mini-icon dk lg"><span class="icon">lock_person</span></span><div><h2>Keamanan &amp; Privasi</h2><p class="muted">Proteksi akses autentikasi biometrik dan kerahasiaan nominal</p></div></div>
+                <div class="soft-box toggle-row"><span class="mini-icon white"><span class="icon">visibility_off</span></span><div><b>Sembunyikan Saldo Awal</b><p class="muted">Secara default samarkan angka nominal total saldo (* * * *) pada beranda</p></div><label class="switch"><input type="checkbox" id="optHide"><i></i></label></div>
+              </article>
+              <article class="card">
+                <div class="set-title"><span class="mini-icon blue lg"><span class="icon">notifications_active</span></span><div><h2>Notifikasi &amp; Pengingat</h2><p class="muted">Konfigurasi dorongan notifikasi otomatis untuk menjaga disiplin keuangan</p></div></div>
+                <div class="soft-box toggle-row"><span class="mini-icon white"><span class="icon">edit_calendar</span></span><div><b>Catat Pengeluaran Harian</b><p class="muted">Pengingat malam hari agar mutasi hari ini tidak terlupakan (Pukul 20:00 WIB)</p></div><label class="switch"><input type="checkbox" data-notif="harian"><i></i></label></div>
+                <div class="soft-box toggle-row"><span class="mini-icon white red-text"><span class="icon">warning</span></span><div><b>Peringatan Batas Anggaran</b><p class="muted">Peringatan langsung seketika belanja mencapai ambang batas &gt;80% kuota</p></div><label class="switch"><input type="checkbox" data-notif="batas"><i></i></label></div>
+                <div class="soft-box toggle-row"><span class="mini-icon white"><span class="icon">finance_mode</span></span><div><b>Ringkasan Mingguan</b><p class="muted">Laporan perbandingan arus kas masuk dan tren belanja setiap hari Minggu pagi</p></div><label class="switch"><input type="checkbox" data-notif="mingguan"><i></i></label></div>
+              </article>
+              <button class="btn-gray reset" id="btnReset"><span class="icon">restart_alt</span>Kembalikan data contoh</button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ===== MODAL (dipakai bersama oleh semua form) ===== -->
+  <div class="modal-backdrop" id="modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head"><h2 id="modalTitle"></h2><button class="icon-btn" id="modalClose" aria-label="Tutup"><span class="icon">close</span></button></div>
+      <form id="modalForm" novalidate><div id="modalBody"></div><div class="modal-foot"><button type="button" class="btn-gray" id="modalCancel">Batal</button><button type="submit" class="btn-primary" id="modalSubmit">Simpan</button></div></form>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
